@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container-filters {
+    background: #8a8af3;
+}
+
+.form {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 1rem;
+    color: #ffffff;
+}
+
+.field {
+    padding: 0.25rem;
+}
+
+.field--checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.field__label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.field__label--checkbox {
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.field__input,
+.field__select {
+    height: 36px;
+    width: 246px;
+    border: 0;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    outline: none;
+}
+
+.field__select {
+    cursor: pointer;
+}
+
+.field__checkbox {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    border: 0;
+}
+
+.btn {
+    border: 0;
+    height: 40px;
+    min-width: 140px;
+    padding: 0 1rem;
+    text-transform: uppercase;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 0.125rem 0.5rem 0.125rem rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #0ad4f8;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #3dd9f5;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.container-cards {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f7f7f78a;
+    align-items: start;
+}
+
+.card {
+    width: calc(25% - 2rem);
+    margin: 1rem;
+    border: 1px solid #8a8af3;
+    padding: 0 1rem;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+}
+
+.card__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.card__title {
+    font-size: 1.5rem;
+}
+
+.card__link {
+    display: block;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.7s ease;
+}
+
+.card__link:hover {
+    background-color: #bfbfff;
+}
+
+.card__link-icon {
+    fill: #8a8af3;
+    transition: all 0.5s ease;
+}
+
+.card__link:hover .card__link-icon {
+    fill: #ffffff;
+}
+
+.card__body {
+    padding: 1rem 0;
+}
+
+.card__list {
+    list-style: none;
+}
+
+.card__item {
+    padding: 0.25rem 0.5rem;
+}
+
+.money {
+    font-size: 1.25rem;
+    font-weight: 100;
+}
+
+.money > sup {
+    text-decoration: underline;
+}
+
+.strikethrough {
+    color: #bbbbbb;
+    text-decoration: line-through;
+}
