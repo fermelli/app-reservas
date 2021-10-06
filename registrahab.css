@@ -1,0 +1,156 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: #e4e6eb;
+	font-family: verdana;
+}
+.container{
+	width: 1600px;
+	background: white;
+	margin: 10px auto;
+}
+.superior{
+	background: #1551a1;
+	overflow: hidden;
+}
+.logo{
+	float: left;
+	width: 300px;
+	padding: 35px;
+}
+.menu{
+	float: right;
+	padding: 50px;
+}
+.opciones li{
+	float: left;
+	list-style: none;
+}
+.opciones li a{
+	color: white;
+	padding: 20px;
+	text-decoration: none;
+	border:1px solid white;
+}
+.opciones li a:hover{
+	background: #0d356a;
+}
+/* estilos para el cuerpo*/
+
+.cuerpo{
+	overflow: hidden;
+}
+
+/*estilos de form*/
+.izquierda{
+	float: left;
+	width: 300px;
+	padding: 20px;
+	border:solid 1px yellow;
+}
+.derecha{
+    float: right;
+	width: 1200px;
+    padding: 20px;
+	border:solid 1px red;
+}
+
+form{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	width: 100%;
+	max-width: 800px;
+	margin-top: 2.8rem;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.field{
+	display: flex;
+	flex-direction: column;
+	width: 14rem;
+	margin: 0.5rem 0;
+}
+h1{
+    text-align: center;
+}
+.field label{
+	font-size: 0.9rem;
+
+	margin-bottom: 0.2rem;
+
+	color: #696969;
+}
+
+.field input{
+	font-size: 1.1rem;
+
+	height: 2.2rem;
+	padding-left: 0.5rem;
+
+	border: 2px solid #696969;
+	border-radius: 5px;
+}
+
+.field select{
+	font-size: 1.1rem;
+
+	width: 12rem;
+	height: 2.6rem;
+	padding-left: 0.5rem;
+
+	border: 2px solid #696969;
+	border-radius: 5px;
+}
+
+.banio{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+
+	width: 20rem;
+	margin: 0.75rem 0;
+}
+
+.banio label{
+	font-size: 0.9rem;
+
+	margin-bottom: 0.2rem;
+
+	color: #696969;
+}
+
+.banio div{
+	display: flex;
+	justify-content: flex-start;
+
+	width: 100%;
+	padding-left: 0.5rem;
+}
+
+.banio div input{
+	width: 1rem;
+	height: 1rem;
+}
+
+.submit{
+	display: flex;
+	justify-content: center;
+
+	width: 100%;
+	margin-top: 1.75rem;
+}
+
+.submit button{
+	font-size: 1.1rem;
+	padding: 1rem 1.5rem;
+	cursor: pointer;
+	border: 2px solid #696969;
+	border-radius: 4px;
+	background-color: lightcyan;
+}
