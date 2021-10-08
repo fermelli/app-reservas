@@ -16,7 +16,7 @@
 }
 
 .form {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -74,6 +74,8 @@
     border-radius: 20px;
     cursor: pointer;
     box-shadow: 0 0.125rem 0.5rem 0.125rem rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
 }
 
 .btn-primary {
@@ -84,8 +86,15 @@
 
 .btn-primary:hover {
     background-color: #3dd9f5;
+}
+
+.btn-secondary {
+    background-color: #bbbbbb;
     color: #ffffff;
-    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #c2c2c2;
 }
 
 .container-cards {
@@ -163,4 +172,15 @@
 .strikethrough {
     color: #bbbbbb;
     text-decoration: line-through;
+}
+
+.alert {
+    width: 100%;
+    height: 50px;
+    padding: 1rem;
+}
+
+.alert__link {
+    color: #181818;
+    font-weight: bold;
 }
