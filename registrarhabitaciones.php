@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="registrahab.css">
-    <title>Document</title>
+    <title>Registrar Habitacion</title>
 </head>
 <body>
     <div class="container">
@@ -30,7 +30,7 @@
 			</div>
 			<div class="derecha">
             <h1>REGISTRAR HABITACION</h1>
-            <form>
+            <form action="create.php" method="POST">
                 <div class='field'>
                     <label>Numero</label>
                     <input name='numero' type='number' required value="numero" placeholder='Número de habitacion' autocomplete />
@@ -39,24 +39,27 @@
                     <label>Tipo Habitación</label>
                     <select name='tipohabitacion' required>
                         <option selected disabled>Sel. una opción</option>
-                        <option>Simple</option>
-                        <option>Doble</option>
-                        <option>Matrimonial</option>
+                        <?php
+                        include("database-init.php");
+                        $tipos=$db->getRoomTypes();
+                        foreach ($tipos as $tipo) {?>
+                            <option value="<?=$tipo;?>"><?=ucfirst($tipo);?></option>
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class='banio'>
                     <label>¿Baño Privado?</label>
-                    <div><input name='banio' type='radio' />Sí</div>
-                    <div><input name='banio' type='radio' />No</div>
+                    <div><input name='banio' type='radio' value="1" />Sí</div>
+                    <div><input name='banio' type='radio' value="0"/>No</div>
                 </div>
                 <div class='field'>
                     <label>Precio</label>
-                    <input name='numero' type='number' required value="precio" placeholder='Precio de Habitación' />
+                    <input name='precio' type='number' required placeholder='Precio de Habitación' />
                 </div>
                 <div class='submit'>
-                    <button>
-                        REGISTRAR
-                    </button>
+                    <button type="submit" name="registrar">Registrar</button>   
                 </div>
             </form>
 

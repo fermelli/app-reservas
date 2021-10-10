@@ -154,3 +154,12 @@ h1{
 	border-radius: 4px;
 	background-color: lightcyan;
 }
+
+/*mensajes de alerta*/
+.contenedor{
+    margin: 50px auto;
+    width: 400px;
+    padding: 30px;
+    background: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
