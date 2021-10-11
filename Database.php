@@ -75,4 +75,10 @@ class Database extends mysqli
     {
         return " bano_privado = $value";
     }
+
+    public function storeRoom($numero, $tipohabitacion, $banio, $precio)
+    {
+        $query = "INSERT INTO habitaciones (numero, tipo_habitacion, bano_privado, precio) VALUES ($numero, '$tipohabitacion',$banio, $precio)";
+        return $this->query($query);
+    }
 }
