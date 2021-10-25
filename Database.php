@@ -51,7 +51,7 @@ class Database extends mysqli
 
     private function applicableFilters($filters)
     {
-        $validFilters = ['preciomax', 'tipohabitacion', 'banoprivado'];
+        $validFilters = ['preciomax', 'tipohabitacion', 'banoprivado', 'fechas'];
         $applicableFilters = [];
         foreach ($filters as $filter => $value) {
             if ($value != '' && in_array($filter, $validFilters)) {
@@ -74,6 +74,11 @@ class Database extends mysqli
     private function banoprivado($value)
     {
         return " bano_privado = $value";
+    }
+
+    private function fechas($fechas)
+    {
+        return " id NOT IN (SELECT habitacion_id FROM reservas WHERE fecha_inicio BETWEEN '$fechas[0]' AND '$fechas[1]' OR fecha_fin BETWEEN '$fechas[0]' AND '$fechas[1]' AND esta_activo = 1)";
     }
 
     public function storeRoom($numero, $tipohabitacion, $banio, $precio)

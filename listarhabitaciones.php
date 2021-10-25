@@ -31,33 +31,53 @@
         </header>
         <div class="container-filters">
             <form class="form" action="./listarhabitaciones.php" method="GET">
-                <div class="field field--input">
-                    <label class="field__label" for="preciomax">Precio máximo</label>
-                    <input class="field__input" id="preciomax" type="number" name="preciomax" placeholder="Precio máximo" min="0" max="9999.99" step="0.01" value="<?= isset($_GET['preciomax']) ? $_GET['preciomax'] : '' ?>">
-                </div>
-                <div class="field field--select">
-                    <label class="field__label" for="tipohabitacion">Tipo de habitación</label>
-                    <select class="field__select" id="tipohabitacion" name="tipohabitacion">
-                        <option class="field__option" value="" selected>Todos los tipos</option>
+                <div class="container-inputs">
+                    <div class="container-inputs__section">
+                        <div class="field field--input">
+                            <label class="field__label" for="preciomax">Precio máximo</label>
+                            <input class="field__input" id="preciomax" type="number" name="preciomax" placeholder="Precio máximo" min="0" max="9999.99" step="0.01" value="<?= isset($_GET['preciomax']) ? $_GET['preciomax'] : '' ?>">
+                        </div>
+                        <div class="field field--select">
+                            <label class="field__label" for="tipohabitacion">Tipo de habitación</label>
+                            <select class="field__select" id="tipohabitacion" name="tipohabitacion">
+                                <option class="field__option" value="" selected>Todos los tipos</option>
+                                <?php
+                                include('database-init.php');
+                                $roomTypes = $db->getRoomTypes();
+                                foreach ($roomTypes as $roomType) :
+                                ?>
+                                    <option class="field__option" value="<?= $roomType ?>" <?= isset($_GET['tipohabitacion']) && $_GET['tipohabitacion'] == $roomType ? 'selected' : '' ?>>
+                                        <?= ucfirst($roomType) ?>
+                                    </option>
+                                <?php
+                                endforeach;
+                                ?>
+                            </select>
+                        </div>
+                        <div class="field field--checkbox">
+                            <input class="field__checkbox" id="banoprivado" type="checkbox" name="banoprivado" value="1" <?= isset($_GET['banoprivado']) ? 'checked' : '' ?>>
+                            <label class="field__label field__label--checkbox" for="banoprivado">Baño privado</label>
+                        </div>
+                    </div>
+                    <div class="container-inputs__section">
                         <?php
-                        include('database-init.php');
-                        $roomTypes = $db->getRoomTypes();
-                        foreach ($roomTypes as $roomType) :
+                        $fechaInicio = isset($_GET['fechas'][0]) ? $_GET['fechas'][0] : '';
+                        $fechaFin = isset($_GET['fechas'][1]) ? $_GET['fechas'][1] : '';
                         ?>
-                            <option class="field__option" value="<?= $roomType ?>" <?= isset($_GET['tipohabitacion']) && $_GET['tipohabitacion'] == $roomType ? 'selected' : '' ?>>
-                                <?= ucfirst($roomType) ?>
-                            </option>
-                        <?php
-                        endforeach;
-                        ?>
-                    </select>
+                        <div class="field field--input">
+                            <label class="field__label" for="fechainicio">Fecha inicio</label>
+                            <input class="field__input" id="fechainicio" type="date" name="fechas[0]" placeholder="Precio máximo" value="<?= $fechaInicio ?>">
+                        </div>
+                        <div class="field field--input">
+                            <label class="field__label" for="fechafin">Fecha fin</label>
+                            <input class="field__input" id="fechafin" type="date" name="fechas[1]" placeholder="Precio máximo" value="<?= $fechaFin ?>">
+                        </div>
+                    </div>
                 </div>
-                <div class="field field--checkbox">
-                    <input class="field__checkbox" id="banoprivado" type="checkbox" name="banoprivado" value="1" <?= isset($_GET['banoprivado']) ? 'checked' : '' ?>>
-                    <label class="field__label field__label--checkbox" for="banoprivado">Baño privado</label>
+                <div class="container-actions">
+                    <input class="btn btn-primary" type="submit" value="Buscar">
+                    <input class="btn btn-secondary" type="reset" onclick="location.assign('./listarhabitaciones.php')" value="Restablecer">
                 </div>
-                <input class="btn btn-primary" type="submit" value="Buscar">
-                <input class="btn btn-secondary" type="reset" onclick="location.assign('./listarhabitaciones.php')" value="Restablecer">
             </form>
         </div>
         <div class="container-cards">
@@ -71,9 +91,9 @@
                     <div class="card">
                         <div class="card__head">
                             <h2 class="card__title">#<?= $habitacion['numero'] ?></h2>
-                            <a href="./habitacion?id=<?= $habitacion['id'] ?>" class="card__link">
-                                <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
-                                    <path d="M 5 3 C 3.9069372 3 3 3.9069372 3 5 L 3 19 C 3 20.093063 3.9069372 21 5 21 L 19 21 C 20.093063 21 21 20.093063 21 19 L 21 12 L 19 12 L 19 19 L 5 19 L 5 5 L 12 5 L 12 3 L 5 3 z M 14 3 L 14 5 L 17.585938 5 L 8.2929688 14.292969 L 9.7070312 15.707031 L 19 6.4140625 L 19 10 L 21 10 L 21 3 L 14 3 z" />
+                            <a href="./habitacion.php?id=<?= $habitacion['id'] ?>&fechainicio=<?= $fechaInicio ?>&fechafin=<?= $fechaFin ?>" class="card__link">
+                                <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
+                                    <use href="./feather-sprite.svg#external-link" />
                                 </svg>
                             </a>
                         </div>
@@ -97,6 +117,35 @@
             ?>
         </div>
     </div>
+    <script>
+        const inputStartDate = document.getElementById('fechainicio');
+        const inputEndDate = document.getElementById('fechafin');
+
+        const setMinimumDate = () => {
+            const now = new Date();
+            let currentDay = now.getDate();
+            let currentMonth = now.getMonth() + 1;
+            currentMonth = currentMonth <= 9 ? `0${currentMonth}` : currentMonth;
+            let currentYear = now.getFullYear();
+            let minimumDate = `${currentYear}-${currentMonth}-${currentDay}`;
+            inputStartDate.setAttribute('min', minimumDate);
+            inputEndDate.setAttribute('min', minimumDate);
+        };
+
+        window.onload = function() {
+            setMinimumDate();
+            inputStartDate.addEventListener('input', function(event) {
+                if (inputEndDate.value == '' || this.value == '') {
+                    inputEndDate.value = this.value;
+                } else {
+                    if (new Date(inputEndDate.value).getTime() < new Date(this.value).getTime()) {
+                        inputEndDate.value = this.value;
+                    }
+                }
+                inputEndDate.setAttribute('min', this.value);
+            });
+        }
+    </script>
 </body>
 
 </html>
