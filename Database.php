@@ -151,4 +151,26 @@ class Database extends mysqli
         $reservation = $result->fetch_array(MYSQLI_ASSOC);
         return $reservation;
     }
+
+    public function getReservedRooms()
+    {
+        $query = "SELECT id, numero, tipo_habitacion, bano_privado, precio FROM habitaciones WHERE id IN (SELECT habitacion_id FROM reservas WHERE (fecha_inicio >= NOW() OR fecha_fin >= NOW()) AND esta_activo = 1)";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $reservedRooms = $result->fetch_all(MYSQLI_ASSOC);
+        return $reservedRooms;
+    }
+
+    public function getRoomsWithoutReservations()
+    {
+        $query = "SELECT id, numero, tipo_habitacion, bano_privado, precio FROM habitaciones WHERE id NOT IN (SELECT habitacion_id FROM reservas WHERE (fecha_inicio >= NOW() OR fecha_fin >= NOW()) AND esta_activo = 1)";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $reservedRooms = $result->fetch_all(MYSQLI_ASSOC);
+        return $reservedRooms;
+    }
 }

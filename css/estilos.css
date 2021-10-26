@@ -494,7 +494,7 @@ h2.card-detail__title {
 /* RESERVED ROOMS */
 .container-cards__title {
     margin: 1.5rem 1rem 0.5rem;
-    padding: 1rem;
+    padding: 1rem 0;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
