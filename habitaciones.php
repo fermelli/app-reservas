@@ -36,17 +36,10 @@
         <div class="container-cards">
             <h2 class="container-cards__title">Habitaciones reservadas</h2>
             <?php
-            $habitaciones = [
-                [
-                    'id'                => 1,
-                    'numero'            => '111',
-                    'tipo_habitacion'   => 'simple',
-                    'bano_privado'      => 1,
-                    'precio'            => '120.00',
-                ],
-            ];
-            if (count($habitaciones) > 0) :
-                foreach ($habitaciones as $habitacion) :
+            include('database-init.php');
+            $habitacionesReservadas = $db->getReservedRooms();
+            if (count($habitacionesReservadas) > 0) :
+                foreach ($habitacionesReservadas as $habitacion) :
                     $priceArray = explode(".", $habitacion['precio']);
             ?>
                     <div class="card">
@@ -80,17 +73,9 @@
         <div class="container-cards">
             <h2 class="container-cards__title">Habitaciones sin reservas</h2>
             <?php
-            $habitaciones = [
-                [
-                    'id'                => 1,
-                    'numero'            => '111',
-                    'tipo_habitacion'   => 'simple',
-                    'bano_privado'      => 1,
-                    'precio'            => '120.00',
-                ],
-            ];
-            if (count($habitaciones) > 0) :
-                foreach ($habitaciones as $habitacion) :
+            $habitacionesSinReservas = $db->getRoomsWithoutReservations();
+            if (count($habitacionesSinReservas) > 0) :
+                foreach ($habitacionesSinReservas as $habitacion) :
                     $priceArray = explode(".", $habitacion['precio']);
             ?>
                     <div class="card">
