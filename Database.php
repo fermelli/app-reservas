@@ -86,4 +86,26 @@ class Database extends mysqli
         $query = "INSERT INTO habitaciones (numero, tipo_habitacion, bano_privado, precio) VALUES ($numero, '$tipohabitacion',$banio, $precio)";
         return $this->query($query);
     }
+
+    public function getRoomById($id)
+    {
+        $query = "SELECT id, numero, tipo_habitacion, bano_privado, precio FROM habitaciones WHERE id = $id";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $room = $result->fetch_array(MYSQLI_ASSOC);
+        return $room;
+    }
+
+    public function getReservationsByRoomId($id)
+    {
+        $query = "SELECT id, fecha_inicio, fecha_fin FROM reservas WHERE habitacion_id = $id AND esta_activo = 1 AND (fecha_inicio >= NOW() OR fecha_fin >= NOW())";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $reservations = $result->fetch_all(MYSQLI_ASSOC);
+        return $reservations;
+    }
 }
