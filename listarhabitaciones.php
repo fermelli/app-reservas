@@ -111,7 +111,7 @@
                 endforeach;
             else :
                 ?>
-                <div class="alert">No hay registros con los criterios establecidos. Puede <a class="alert__link" href="javascript:location.assign('./listarhabitaciones.php')" title="Restablecer criterios y buscar">restablecer</a> los criterios de búsqueda.</div>
+                <div class="alert-no-records">No hay registros con los criterios establecidos. Puede <a class="alert-no-records__link" href="javascript:location.assign('./listarhabitaciones.php')" title="Restablecer criterios y buscar">restablecer</a> los criterios de búsqueda.</div>
             <?php
             endif;
             ?>
