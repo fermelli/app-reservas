@@ -202,13 +202,12 @@
     text-decoration: line-through;
 }
 
-.alert {
+.alert-no-records {
     width: 100%;
-    height: 50px;
     padding: 1rem;
 }
 
-.alert__link {
+.alert-no-records__link {
     color: #181818;
     font-weight: bold;
 }
@@ -386,4 +385,108 @@ h2.card-detail__title {
 .form-reservation {
     background-color: #f7f7f78a;
     padding: 2rem;
+}
+
+/* NO RECORDS */
+.no-records {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.no-records__title,
+.no-records__content {
+    padding: 1rem 0 0.5rem 0;
+}
+
+.no-records__icon {
+    margin: 1.5rem 0;
+}
+
+/* ALERT */
+
+.alert {
+    border-width: 1px;
+    border-style: solid;
+    margin: 2rem 0 1rem 0;
+    border-radius: 0.25rem;
+}
+
+.alert-title {
+    padding: 1rem 1rem 0.5rem 1rem;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.alert-content {
+    padding: 1rem;
+}
+
+.alert--success {
+    color: #0f8f0f;
+    background-color: #14ad1467;
+    border-color: #0f8f0f;
+}
+
+.alert--success .alert-title {
+    border-color: #16a516;
+}
+
+.alert--danger {
+    color: #cc1919;
+    background-color: #c50d0d67;
+    border-color: #cc1919;
+}
+
+.alert--danger .alert-title {
+    border-color: #cc1919;
+}
+
+.alert__link {
+    color: #ffffff;
+}
+
+/* RESERVATION DETAILS */
+
+.reservation-details {
+    width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservation-details__list {
+    width: 100%;
+    list-style: none;
+}
+
+.reservation-details__title {
+    padding: 1rem 0 0.5rem 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.reservation-details__list-item {
+    padding: 0.5rem 0;
+}
+
+.reservation-details__list-item > span:first-child {
+    display: block;
+    font-size: 0.825rem;
+    font-weight: bold;
+}
+
+.btn-link {
+    display: block;
+    background-color: #ffffff;
+    padding: 0.75rem 1rem;
+    color: #181818;
+    width: 120px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 1rem auto;
+}
+
+.btn-link--primary {
+    background-color: #0ad4f8;
 }

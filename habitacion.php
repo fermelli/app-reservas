@@ -163,11 +163,13 @@
                 <?php
                 else :
                 ?>
-                    <h2>No existe la habitación solicitada</h2>
-                    <p>Por favor intente nuevamente en <a href="./listarhabitaciones.php">lista de habitaciones</a></p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="128x" height="128px">
-                        <use href="./feather-sprite.svg#no-agency-records" />
-                    </svg>
+                    <div class="no-records">
+                        <h2 class="no-records__title">No existe la habitación solicitada</h2>
+                        <p class="no-records__content">Por favor intente nuevamente en <a href="./listarhabitaciones.php">lista de habitaciones</a></p>
+                        <svg class="no-records__icon" xmlns="http://www.w3.org/2000/svg" width="128px" height="128px">
+                            <use href="./feather-sprite.svg#no-agency-records" />
+                        </svg>
+                    </div>
                 <?php
                 endif;
             else :

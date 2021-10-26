@@ -108,4 +108,47 @@ class Database extends mysqli
         $reservations = $result->fetch_all(MYSQLI_ASSOC);
         return $reservations;
     }
+
+    public function storeReservation(
+        $ci,
+        $nombres,
+        $apellidoPaterno,
+        $apellidoMaterno,
+        $telefono,
+        $fechaInicio,
+        $fechaFin,
+        $habitacionId
+    ) {
+        $query = "SELECT id FROM reservas WHERE habitacion_id = $habitacionId AND (fecha_inicio BETWEEN '$fechaInicio' AND '$fechaFin' OR fecha_fin BETWEEN '$fechaInicio' AND '$fechaFin') AND esta_activo = 1";
+        $result = $this->query($query);
+        if ($result->num_rows == 0) {
+            try {
+                $this->begin_transaction();
+                $query1 = "INSERT INTO clientes (ci, nombres, apellido_paterno, apellido_materno, telefono) VALUES ('$ci', '$nombres', '$apellidoPaterno', '$apellidoMaterno', '$telefono')";
+                $this->query($query1);
+                $clienteId = $this->insert_id;
+                $query2 = "INSERT INTO reservas (fecha_inicio, fecha_fin, habitacion_id, cliente_id) VALUES ('$fechaInicio', '$fechaFin', $habitacionId, $clienteId)";
+                $this->query($query2);
+                $reservationId = $this->insert_id;
+                $this->commit();
+                return $reservationId;
+            } catch (mysqli_sql_exception $exception) {
+                $this->rollback();
+                throw $exception;
+            }
+        } else {
+            throw new Error("¡Error: La habitación no se encuentra disponible en esas fechas!");
+        }
+    }
+
+    public function getReservationsById($id)
+    {
+        $query = "SELECT r.id, r.fecha, fecha_inicio, fecha_fin, habitacion_id, h.id, numero, tipo_habitacion, bano_privado, precio, c.id,  ci, nombres, apellido_paterno, apellido_materno, telefono FROM reservas AS r LEFT JOIN habitaciones AS h ON habitacion_id = h.id LEFT JOIN clientes AS c ON cliente_id = c.id WHERE r.id = $id AND esta_activo = 1 LIMIT 1";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $reservation = $result->fetch_array(MYSQLI_ASSOC);
+        return $reservation;
+    }
 }
