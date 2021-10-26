@@ -21,6 +21,9 @@
             <nav class="navbar__menu">
                 <ul class="navbar__list">
                     <li class="navbar__list-item">
+                        <a class="navbar__link" href="./habitaciones.php">Habitaciones</a>
+                    </li>
+                    <li class="navbar__list-item">
                         <a class="navbar__link" href="./registrarhabitaciones.php">Registrar</a>
                     </li>
                     <li class="navbar__list-item">
