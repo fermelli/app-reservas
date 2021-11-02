@@ -12,26 +12,10 @@
 
 <body>
     <div class="container">
-        <header class="navbar">
-            <div class="navbar__container-logo">
-                <a href="#" class="navbar__logo-link">
-                    <img class="navbar__logo" src="./logo.png" alt="Logo">
-                </a>
-            </div>
-            <nav class="navbar__menu">
-                <ul class="navbar__list">
-                    <li class="navbar__list-item">
-                        <a class="navbar__link" href="./habitaciones.php">Habitaciones</a>
-                    </li>
-                    <li class="navbar__list-item">
-                        <a class="navbar__link" href="./registrarhabitaciones.php">Registrar</a>
-                    </li>
-                    <li class="navbar__list-item">
-                        <a class="navbar__link navbar__link--active" href="./listarhabitaciones.php">Buscar</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php
+        $enlaceActivo = 'listarhabitaciones.php';
+        require_once "./commons/header.php";
+        ?>
         <div class="container-filters">
             <form class="form" action="./listarhabitaciones.php" method="GET">
                 <div class="container-inputs">
