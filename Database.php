@@ -173,4 +173,41 @@ class Database extends mysqli
         $reservedRooms = $result->fetch_all(MYSQLI_ASSOC);
         return $reservedRooms;
     }
+
+    public function storePromo($nombre, $descuento, $fechaInicio, $fechaFin, $idsHabitaciones)
+    {
+        try {
+            $this->begin_transaction();
+            $query = "INSERT INTO promociones (nombre, descuento, fecha_inicio, fecha_fin) VALUES ('$nombre', $descuento, '$fechaInicio', '$fechaFin')";
+            $this->query($query);
+            $promocionId = $this->insert_id;
+            foreach ($idsHabitaciones as $idHabitacion) {
+                $query1 = "INSERT INTO promocion_habitacion (promocion_id, habitacion_id) VALUES ($promocionId, $idHabitacion)";
+                $this->query($query1);
+            }
+            $this->commit();
+            return $promocionId;
+        } catch (mysqli_sql_exception $exception) {
+            $this->rollback();
+            throw $exception;
+            return null;
+        }
+    }
+
+    public function getPromos()
+    {
+        $query = "SELECT id, nombre, descuento, fecha, fecha_inicio, fecha_fin FROM promociones";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $promociones = $result->fetch_all(MYSQLI_ASSOC);
+        foreach ($promociones as $key => $promocion) {
+            $query1 = "SELECT id, numero, tipo_habitacion, bano_privado, precio FROM promocion_habitacion AS ph LEFT JOIN habitaciones AS h ON habitacion_id = id WHERE promocion_id = {$promocion['id']}";
+            $result1 = $this->query($query1);
+            $habitaciones = $result1->fetch_all(MYSQLI_ASSOC);
+            $promociones[$key]['habitaciones'] = $habitaciones;
+        }
+        return $promociones;
+    }
 }

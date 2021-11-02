@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <?php
-        $enlaceActivo = 'promociones.php';
+        $enlaceActivo = null;
         $esTemaOscuro = TRUE;
         require_once "./commons/header.php";
         ?>
@@ -47,7 +47,7 @@
                         foreach ($habitaciones as $habitacion) :
                     ?>
                             <div class="field field--checkbox my-3">
-                                <input class="field__checkbox" id="habitacion<?= $habitacion['id'] ?>" type="checkbox" name="habitaciones[]" value="<?= $habitacion['id'] ?>">
+                                <input class="field__checkbox" id="habitacion<?= $habitacion['id'] ?>" type="checkbox" name="idshabitaciones[]" value="<?= $habitacion['id'] ?>">
                                 <label class="field__label field__label--checkbox" for="habitacion<?= $habitacion['id'] ?>">
                                     Habitación #<?= $habitacion['numero'] ?>
                                     <span class="text-small">
