@@ -533,3 +533,32 @@ h2.card-detail__title {
 	font-size: 0.875rem;
 	color: #616161;
 }
+
+.table-promos {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table-promos th,
+.table-promos td {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 1rem;
+}
+
+.table-promos__list {
+	list-style: none;
+}
+
+.table-promos__list-item {
+	margin: 0.25rem 0;
+	padding: 0.25rem;
+}
+
+.table-promos__list-item:not(:last-child) {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-promos__link {
+	text-decoration: none;
+	color: #8080f5;
+}
