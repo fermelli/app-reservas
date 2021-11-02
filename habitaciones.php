@@ -13,26 +13,11 @@
 
 <body>
     <div class="container">
-        <header class="navbar navbar--dark">
-            <div class="navbar__container-logo">
-                <a href="#" class="navbar__logo-link">
-                    <img class="navbar__logo" src="./logo-light.png" alt="Logo">
-                </a>
-            </div>
-            <nav class="navbar__menu">
-                <ul class="navbar__list">
-                    <li class="navbar__list-item">
-                        <a class="navbar__link navbar__link--active" href="./habitaciones.php">Habitaciones</a>
-                    </li>
-                    <li class="navbar__list-item">
-                        <a class="navbar__link" href="./registrarhabitaciones.php">Registrar</a>
-                    </li>
-                    <li class="navbar__list-item">
-                        <a class="navbar__link" href="./listarhabitaciones.php">Buscar</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <?php
+        $enlaceActivo = 'habitaciones.php';
+        $esTemaOscuro = TRUE;
+        require_once "./commons/header.php";
+        ?>
         <div class="container-cards">
             <h2 class="container-cards__title">Habitaciones reservadas</h2>
             <?php
