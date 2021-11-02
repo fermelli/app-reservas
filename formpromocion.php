@@ -26,8 +26,8 @@
                         <input class="field__input field__input--outline" id="nombre" type="text" name="nombre" placeholder="Nombre" required>
                     </div>
                     <div class="field field--input">
-                        <label class="field__label" for="descuento">Descuento (%)</label>
-                        <input class="field__input field__input--outline" id="descuento" type="number" name="descuento" placeholder="Descuento" min="1" max="100" step="1" required>
+                        <label class="field__label" for="porcentajedescuento">Descuento (%)</label>
+                        <input class="field__input field__input--outline" id="porcentajedescuento" type="number" name="porcentajedescuento" placeholder="Porcentaje descuento" min="1" max="100" step="1" required>
                     </div>
                     <div class="field field--input">
                         <label class="field__label" for="fechainicio">Fecha inicio</label>

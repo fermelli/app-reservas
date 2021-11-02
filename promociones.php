@@ -44,7 +44,7 @@
                             <tr>
                                 <td><?= $indice + 1 ?></td>
                                 <td><?= $promocion['nombre'] ?></td>
-                                <td><?= $promocion['descuento'] ?></td>
+                                <td><?= $promocion['porcentaje_descuento'] ?></td>
                                 <td><?= $promocion['fecha_inicio'] ?></td>
                                 <td><?= $promocion['fecha_fin'] ?></td>
                                 <td>
@@ -58,7 +58,7 @@
                                                 </a>
                                                 <span class="text-small">
                                                     <?= ucfirst($habitacion['tipo_habitacion']) ?>,
-                                                    <strong><?= round((1 - ($promocion['descuento'] / 100)) * $habitacion['precio']) . ".00" ?></strong>
+                                                    <strong><?= round((1 - ($promocion['porcentaje_descuento'] / 100)) * $habitacion['precio']) . ".00" ?></strong>
                                                     <span class="strikethrough"><?= $habitacion['precio'] ?></span>
                                                     <?= $habitacion['bano_privado'] ? ', baño privado' : '' ?>
                                                 </span>

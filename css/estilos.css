@@ -76,7 +76,8 @@
 	outline: none;
 }
 
-.field__input--outline {
+.field__input--outline,
+.field__select--outline {
 	border: 1px solid #616161;
 }
 

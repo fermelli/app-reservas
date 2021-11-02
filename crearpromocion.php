@@ -19,16 +19,16 @@
         ?>
         <?php
         if (isset($_POST['idshabitaciones'])) :
-            if (isset($_POST['nombre'], $_POST['descuento'], $_POST['fechainicio'], $_POST['fechafin'])) :
+            if (isset($_POST['nombre'], $_POST['porcentajedescuento'], $_POST['fechainicio'], $_POST['fechafin'])) :
 
                 $nombre = $_POST['nombre'];
-                $descuento = $_POST['descuento'];
+                $porcentajeDescuento = $_POST['porcentajedescuento'];
                 $fechaInicio = $_POST['fechainicio'];
                 $fechaFin = $_POST['fechafin'];
                 $idsHabitaciones = $_POST['idshabitaciones'];
                 include('database-init.php');
                 try {
-                    if ($idPromo = $db->storePromo($nombre, $descuento, $fechaInicio, $fechaFin, $idsHabitaciones)) :
+                    if ($idPromo = $db->storePromo($nombre, $porcentajeDescuento, $fechaInicio, $fechaFin, $idsHabitaciones)) :
 
         ?>
                         <div class="alert alert--success">
