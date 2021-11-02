@@ -4,6 +4,10 @@ require_once './config.php';
 
 $enlaces = [
     [
+        'nombre'   => 'promociones.php',
+        'texto'     => 'Promociones',
+    ],
+    [
         'nombre'   => 'habitaciones.php',
         'texto'     => 'Habitaciones',
     ],
