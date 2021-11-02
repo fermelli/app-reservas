@@ -53,11 +53,11 @@
                         ?>
                         <div class="field field--input">
                             <label class="field__label" for="fechainicio">Fecha inicio</label>
-                            <input class="field__input" id="fechainicio" type="date" name="fechas[0]" placeholder="Precio máximo" value="<?= $fechaInicio ?>">
+                            <input class="field__input" id="fechainicio" type="date" name="fechas[0]" value="<?= $fechaInicio ?>">
                         </div>
                         <div class="field field--input">
                             <label class="field__label" for="fechafin">Fecha fin</label>
-                            <input class="field__input" id="fechafin" type="date" name="fechas[1]" placeholder="Precio máximo" value="<?= $fechaFin ?>">
+                            <input class="field__input" id="fechafin" type="date" name="fechas[1]" value="<?= $fechaFin ?>">
                         </div>
                     </div>
                 </div>
