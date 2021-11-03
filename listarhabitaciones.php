@@ -11,11 +11,11 @@
 </head>
 
 <body>
+    <?php
+    $enlaceActivo = 'listarhabitaciones.php';
+    require_once "./commons/header.php";
+    ?>
     <div class="container">
-        <?php
-        $enlaceActivo = 'listarhabitaciones.php';
-        require_once "./commons/header.php";
-        ?>
         <div class="container-filters">
             <form class="form" action="./listarhabitaciones.php" method="GET">
                 <div class="container-inputs">

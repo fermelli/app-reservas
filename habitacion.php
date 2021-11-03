@@ -11,12 +11,12 @@
 </head>
 
 <body>
+    <?php
+    $enlaceActivo = null;
+    $esTemaOscuro = TRUE;
+    require_once "./commons/header.php";
+    ?>
     <div class="container">
-        <?php
-        $enlaceActivo = null;
-        $esTemaOscuro = TRUE;
-        require_once "./commons/header.php";
-        ?>
         <section>
             <?php
             if (isset($_GET['id'])) :

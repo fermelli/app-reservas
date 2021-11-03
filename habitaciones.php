@@ -11,12 +11,12 @@
 </head>
 
 <body>
+    <?php
+    $enlaceActivo = 'habitaciones.php';
+    $esTemaOscuro = TRUE;
+    require_once "./commons/header.php";
+    ?>
     <div class="container">
-        <?php
-        $enlaceActivo = 'habitaciones.php';
-        $esTemaOscuro = TRUE;
-        require_once "./commons/header.php";
-        ?>
         <div class="container-cards">
             <h2 class="container-cards__title">Habitaciones reservadas</h2>
             <?php
