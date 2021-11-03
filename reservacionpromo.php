@@ -110,7 +110,7 @@
                                 <h2 class="card-detail__title">Reservar con promoción</h2>
                             </div>
                             <div class="card-detail__body">
-                                <form class="form-reservation" action="./registrarreserva.php" method="POST">
+                                <form class="form-reservation" action="./registrarreservapromocion.php" method="POST">
                                     <div class="form-reservation__section">
                                         <h3 class="form-reservation__section-title">Datos cliente</h3>
                                         <div class="field field--w50 field--input">
@@ -160,7 +160,8 @@
                                             <label class="field__label" for="fechafin">Fecha fin</label>
                                             <input class="field__input field__input--outline" id="fechafin" type="date" name="fechafin" min="<?= $promo['fecha_inicio'] ?>" required>
                                         </div>
-                                        <input type="hidden" name="habitacionid" value="<?= $_GET['id'] ?>">
+                                        <input type="hidden" name="habitacionid" value="<?= $_GET['habitacionid'] ?>">
+                                        <input type="hidden" name="promocionid" value="<?= $_GET['promocionid'] ?>">
                                     </div>
                                     <div class="form-reservation__section actions">
                                         <input class="btn btn-primary" type="submit" value="Reservar">
@@ -194,7 +195,6 @@
             ?>
         </section>
     </div>
-    <!-- <script src="./js/main.js"></script> -->
 </body>
 
 </html>

@@ -48,25 +48,35 @@
                                 <td><?= $promocion['fecha_inicio'] ?></td>
                                 <td><?= $promocion['fecha_fin'] ?></td>
                                 <td>
-                                    <ul class="table-promos__list">
-                                        <?php
-                                        foreach ($promocion['habitaciones'] as $habitacion) :
-                                        ?>
-                                            <li class="table-promos__list-item">
-                                                <a class="table-promos__link" href="./reservacionpromo.php?habitacionid=<?= $habitacion['id'] ?>&promocionid=<?= $promocion['id'] ?>">
-                                                    Habitación #<?= $habitacion['numero'] ?>
-                                                </a>
-                                                <span class="text-small">
-                                                    <?= ucfirst($habitacion['tipo_habitacion']) ?>,
-                                                    <strong><?= round((1 - ($promocion['porcentaje_descuento'] / 100)) * $habitacion['precio']) . ".00" ?></strong>
-                                                    <span class="strikethrough"><?= $habitacion['precio'] ?></span>
-                                                    <?= $habitacion['bano_privado'] ? ', baño privado' : '' ?>
-                                                </span>
-                                            </li>
-                                        <?php
-                                        endforeach;
-                                        ?>
-                                    </ul>
+                                    <?php
+                                    if ($promocion['habitaciones']) :
+                                    ?>
+                                        <ul class="table-promos__list">
+                                            <?php
+                                            foreach ($promocion['habitaciones'] as $habitacion) :
+                                            ?>
+                                                <li class="table-promos__list-item">
+                                                    <a class="table-promos__link" href="./reservacionpromo.php?habitacionid=<?= $habitacion['id'] ?>&promocionid=<?= $promocion['id'] ?>">
+                                                        Habitación #<?= $habitacion['numero'] ?>
+                                                    </a>
+                                                    <span class="text-small">
+                                                        <?= ucfirst($habitacion['tipo_habitacion']) ?>,
+                                                        <strong><?= round((1 - ($promocion['porcentaje_descuento'] / 100)) * $habitacion['precio']) . ".00" ?></strong>
+                                                        <span class="strikethrough"><?= $habitacion['precio'] ?></span>
+                                                        <?= $habitacion['bano_privado'] ? ', baño privado' : '' ?>
+                                                    </span>
+                                                </li>
+                                            <?php
+                                            endforeach;
+                                            ?>
+                                        </ul>
+                                    <?php
+                                    else :
+                                    ?>
+                                        <p>Ya no hay habitaciones con promociones</p>
+                                    <?php
+                                    endif;
+                                    ?>
                                 </td>
                             </tr>
                         <?php
