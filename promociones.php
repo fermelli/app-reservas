@@ -11,12 +11,12 @@
 </head>
 
 <body>
+    <?php
+    $enlaceActivo = 'promociones.php';
+    $esTemaOscuro = TRUE;
+    require_once "./commons/header.php";
+    ?>
     <div class="container">
-        <?php
-        $enlaceActivo = 'promociones.php';
-        $esTemaOscuro = TRUE;
-        require_once "./commons/header.php";
-        ?>
         <div class="container-actions">
             <a class="btn-link btn-link--primary" href="./formpromocion.php">Crear promoción</a>
         </div>

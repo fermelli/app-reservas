@@ -12,12 +12,12 @@
 </head>
 
 <body>
+    <?php
+    $enlaceActivo = 'registrarhabitaciones.php';
+    $esTemaOscuro = TRUE;
+    require_once "./commons/header.php";
+    ?>
     <div class="container">
-        <?php
-        $enlaceActivo = 'registrarhabitaciones.php';
-        $esTemaOscuro = TRUE;
-        require_once "./commons/header.php";
-        ?>
         <section class="cuerpo">
             <div class="izquierda"></div>
             <div class="derecha">

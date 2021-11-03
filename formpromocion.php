@@ -11,12 +11,12 @@
 </head>
 
 <body>
+    <?php
+    $enlaceActivo = null;
+    $esTemaOscuro = TRUE;
+    require_once "./commons/header.php";
+    ?>
     <div class="container">
-        <?php
-        $enlaceActivo = null;
-        $esTemaOscuro = TRUE;
-        require_once "./commons/header.php";
-        ?>
         <div class="container-form">
             <form class="form-promo" action="./crearpromocion.php" method="post">
                 <div class="form-promo__section">
