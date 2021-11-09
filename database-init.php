@@ -2,4 +2,6 @@
 
 include("Database.php");
 
-$db = new Database("localhost", "root", "", "bd_app_reservas");
+require_once './config.php';
+
+$db = new Database(MYSQL['HOST'], MYSQL['USER'], MYSQL['PASSWORD'], MYSQL['DATABASE']);
