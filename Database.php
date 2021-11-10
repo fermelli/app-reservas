@@ -264,4 +264,22 @@ class Database extends mysqli
         }
         return $result->fetch_array(MYSQLI_ASSOC);
     }
+
+    public function storeComment($nombreCompleto, $valuacion, $texto)
+    {
+        $query = "INSERT INTO comentarios (nombre_completo, valuacion, texto) VALUES ('$nombreCompleto', $valuacion, '$texto')";
+
+        return $this->query($query);
+    }
+
+    public function getComments()
+    {
+        $query = "SELECT id, nombre_completo, valuacion, texto FROM comentarios ORDER BY id DESC LIMIT 5";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $comments = $result->fetch_all(MYSQLI_ASSOC);
+        return $comments;
+    }
 }
