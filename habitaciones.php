@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card__head">
                             <h2 class="card__title">#<?= $habitacion['numero'] ?></h2>
-                            <a href="#" class="card__link">
+                            <a href="./historialreservaciones.php?id=<?= $habitacion['id'] ?>" class="card__link">
                                 <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
                                     <use href="./feather-sprite.svg#external-link" />
                                 </svg>
@@ -65,7 +65,7 @@
                     <div class="card">
                         <div class="card__head">
                             <h2 class="card__title">#<?= $habitacion['numero'] ?></h2>
-                            <a href="#" class="card__link">
+                            <a href="./historialreservaciones.php?id=<?= $habitacion['id'] ?>" class="card__link">
                                 <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
                                     <use href="./feather-sprite.svg#external-link" />
                                 </svg>
