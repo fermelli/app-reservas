@@ -86,48 +86,11 @@
 		<section class="section">
 			<h2 class="section__title">Experiencia de huéspedes</h2>
 			<div class="container-commnets">
-				<div class="card-comment-container">
-					<div class="card-comment">
-						<div class="card-comment__head">
-							<h4 class="card-comment__full-name">Rodrigo Rivas</h4>
-							<span class="card_comment__rating">4/5</span>
-						</div>
-						<p class="card-comment__text">
-							Ambiente cómodo agua caliente y buen desayuno el único problema es la conectividad del wifi no llega a todas las habitaciones
-						</p>
-					</div>
-					<div class="card-comment">
-						<div class="card-comment__head">
-							<h4 class="card-comment__full-name">Israel Cari</h4>
-							<span class="card_comment__rating">2/5</span>
-						</div>
-						<p class="card-comment__text">
-							El precio es bueno y la ubicación también. Pero, el lugar se ve muy deteriorado, antiguo y poco acogedor.
-						</p>
-					</div>
-					<div class="card-comment">
-						<div class="card-comment__head">
-							<h4 class="card-comment__full-name">Paola Céspedes Zeballos</h4>
-							<span class="card_comment__rating">4/5</span>
-						</div>
-						<p class="card-comment__text">
-							Buena atención y ubicación, sin embargo el wifi no es muy bueno y tuvimos algunos inconvenientes con el parqueo
-						</p>
-					</div>
-					<div class="card-comment">
-						<div class="card-comment__head">
-							<h4 class="card-comment__full-name">Juliana Silva Garcia</h4>
-							<span class="card_comment__rating">4/5</span>
-						</div>
-						<p class="card-comment__text">
-							Bien sitiado, cerca de la plaza y restaurantes; cuartos limpios, baño privado con su bañera, ducha caliente y con buen flujo de agua; desayuno incluso y personal muy amable.
-							Tuve una buena experiencia y lo recomiendo.
-						</p>
-					</div>
-				</div>
+				<div class="card-comment-container" id="card-comment-container"></div>
 				<div class="make-comment-container">
-					<form action="./registrarcomentario.php" class="form-comment">
+					<form class="form-comment" id="form-comment" action="./registrarcomentario.php" method="POST">
 						<h3 class="form-comment__title">Agrega tu comentario y calificación</h3>
+						<div class="form-comment__errors" id="form-comment__errors"></div>
 						<div class="field field--w100 my-3">
 							<label class="field__label" for="nombrecompleto">Nombre completo</label>
 							<input class="field__input field__input--outline" type="text" name="nombrecompleto" id="nombrecompleto" placeholder="Tu nombre completo" required>
@@ -149,7 +112,7 @@
 						</div>
 						<div class="field field--w100 my-3">
 							<label class="field__label" for="texto">Comenta tu experiencia</label>
-							<textarea class="field__textarea field__textarea--outline" name="texto" id="texto" placeholder="Describe tu estadía" required></textarea>
+							<textarea class="field__textarea field__textarea--outline" name="texto" id="texto" placeholder="Describe tu estadía" maxlength="144" required></textarea>
 						</div>
 						<div class="container-captcha">
 							<div class="w50">
@@ -157,9 +120,9 @@
 								<button class="btn-captcha" type="button" onclick="document.getElementById('captcha').src = 'securimage/securimage_show.php?' + Math.random()">[Cambiar imagen]</button>
 							</div>
 							<div class="field field--w50 my-3">
-								<label class="field__label" for="captchacode">Código captcha</label>
-								<input class="field__input field__input--outline" type="text" name="captchacode" id="captchacode" placeholder="Código captcha" required>
-								<small class="text-help">No se distingue entre mayúsculas y minúsculas</small>
+								<label class="field__label" for="codigocaptcha">Código captcha</label>
+								<input class="field__input field__input--outline" type="text" name="codigocaptcha" id="codigocaptcha" placeholder="Código captcha" required>
+								<small class="text-help">No distingue entre mayúsculas y minúsculas</small>
 							</div>
 						</div>
 						<div class="form-comment__actions">
