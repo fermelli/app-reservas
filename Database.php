@@ -282,4 +282,15 @@ class Database extends mysqli
         $comments = $result->fetch_all(MYSQLI_ASSOC);
         return $comments;
     }
+
+    public function getHistorialReservationsByRoomId($id)
+    {
+        $query = "SELECT r.id AS reserva_id, r.fecha AS fecha_reservacion, r.fecha_inicio, r.fecha_fin, ci, nombres, apellido_paterno, apellido_materno, telefono, p.id AS promocion_id, nombre, porcentaje_descuento FROM reservas AS r LEFT JOIN clientes AS c ON cliente_id = c.id LEFT JOIN promociones AS p ON promocion_id_promo = p.id WHERE habitacion_id = $id";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $reservations = $result->fetch_all(MYSQLI_ASSOC);
+        return $reservations;
+    }
 }
