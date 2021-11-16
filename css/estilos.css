@@ -54,6 +54,10 @@
 	width: 246px;
 }
 
+.field--file {
+	width: 492px;
+}
+
 .field--w100 {
 	max-width: 100%;
 	min-width: 100%;
@@ -182,6 +186,7 @@
 
 .card__link {
 	display: block;
+	background-color: #ffffff;
 	width: 30px;
 	height: 30px;
 	display: flex;
@@ -319,7 +324,6 @@
 .container-cards-detail .images {
 	grid-row: 2 / 4;
 	grid-column: 1 / 3;
-	height: 300px;
 }
 
 .container-cards-detail .main {
@@ -995,4 +999,43 @@ h2.card-detail__title {
 
 .pin-status--inactive {
 	background-color: #e92424;
+}
+
+/* UPLOAD IMAGES */
+
+.form-upload-images {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem;
+}
+
+.container-images {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 1fr 1fr;
+	gap: 1rem;
+}
+
+.image {
+	position: relative;
+}
+
+.image--main {
+	grid-column: 1 / 3;
+	grid-row: 1 / 3;
+}
+
+.image__img {
+	width: 100%;
+}
+
+.image__img--selected {
+	border: 3px solid#8a8af3;
+}
+
+.position-bottom-right {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 }
