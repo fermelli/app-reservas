@@ -34,6 +34,73 @@
                                 <h1 class="card-detail__title">Habitación #<?= $habitacion['numero'] ?></h1>
                             </div>
                         </div>
+                        <div class="card-detail images">
+                            <div class="card-detail__head">
+                                <h2 class="card-detail__title">Imágenes</h2>
+                            </div>
+                            <form class="form-upload-images" action="proceso_guardarimagen.php" method="POST" enctype="multipart/form-data">
+                                <div class="field field--input">
+                                    <label class="field__label" for="nombre">Nombre imagen</label>
+                                    <input class="field__input field__input--outline" id="nombre" type="text" name="nombre" placeholder="Nombre imagen">
+                                </div>
+                                <div class="field field--input field--file">
+                                    <label class="field__label" for="imagenes">Imagen</label>
+                                    <input class="field__input field__input--outline" id="imagenes" type="file" name="imagenes" accept=".jpg, .png">
+                                </div>
+                                <input class="btn btn-primary" type="submit" value="Subir Imagen">
+                                <input class="btn btn-secondary" type="reset" value="Cancelar">
+                            </form>
+                            <div class="container-images">
+                                <?php
+                                $imagenes = [
+                                    [
+                                        'id' => 1,
+                                        'ruta_imagen' => 'imagen1.webp',
+                                        'nombre_imagen' => 'Imagen 1',
+                                        'id_habitacion' => 1,
+                                    ],
+                                    [
+                                        'id' => 2,
+                                        'ruta_imagen' => 'imagen2.webp',
+                                        'nombre_imagen' => 'Imagen 2',
+                                        'id_habitacion' => 1,
+                                    ],
+                                    [
+                                        'id' => 3,
+                                        'ruta_imagen' => 'imagen3.webp',
+                                        'nombre_imagen' => 'Imagen 3',
+                                        'id_habitacion' => 1,
+                                    ],
+                                    [
+                                        'id' => 4,
+                                        'ruta_imagen' => 'imagen4.webp',
+                                        'nombre_imagen' => 'Imagen 4',
+                                        'id_habitacion' => 1,
+                                    ],
+                                ];
+
+                                foreach ($imagenes as $index => $imagen) :
+                                    if ($index == 0) :
+                                ?>
+                                        <div class="image image--main">
+                                            <img class="image__img" id="img-main" src="./public/images/<?= $imagen['ruta_imagen'] ?>" alt="<?= $imagen['nombre_imagen'] ?>">
+                                        </div>
+                                    <?php
+                                    endif;
+                                    ?>
+                                    <div class="image">
+                                        <img class="image__img <?= $index == 0 ? 'image__img--selected' : '' ?>" src="./public/images/<?= $imagen['ruta_imagen'] ?>" alt="<?= $imagen['nombre_imagen'] ?>" title="<?= $imagen['nombre_imagen'] ?>">
+                                        <a href="#" class="card__link position-bottom-right">
+                                            <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
+                                                <use href="./feather-sprite.svg#delete" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                <?php
+                                endforeach;
+                                ?>
+                            </div>
+                        </div>
                         <div class="card-detail sidebar-top">
                             <div class="card-detail__head">
                                 <h2 class="card-detail__title">Detalles</h2>
@@ -173,6 +240,25 @@
         </section>
     </div>
     <script src="./js/main.js"></script>
+    <script>
+        window.onload = function() {
+            const images = document.querySelectorAll('.image__img')
+            images.forEach((img, index) => {
+                if (index != 0) {
+                    img.addEventListener('click', function(event) {
+                        const currentImage = event.currentTarget
+                        document.getElementById('img-main').src = currentImage.src
+                        images.forEach(image => {
+                            if (image.classList.contains('image__img--selected')) {
+                                image.classList.remove('image__img--selected')
+                            }
+                        });
+                        currentImage.classList.add('image__img--selected')
+                    })
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
