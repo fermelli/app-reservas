@@ -293,4 +293,10 @@ class Database extends mysqli
         $reservations = $result->fetch_all(MYSQLI_ASSOC);
         return $reservations;
     }
+
+    public function storeImageByRoomId($nombreImagen, $rutaImagen, $idHabitacion)
+    {
+        $query = "INSERT INTO imagenes (ruta_imagen, nombre_imagen, id_habitacion) VALUES ('$rutaImagen', '$nombreImagen', $idHabitacion)";
+        return $this->query($query);
+    }
 }

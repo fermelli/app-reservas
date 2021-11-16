@@ -40,13 +40,14 @@
                             </div>
                             <form class="form-upload-images" action="proceso_guardarimagen.php" method="POST" enctype="multipart/form-data">
                                 <div class="field field--input">
-                                    <label class="field__label" for="nombre">Nombre imagen</label>
-                                    <input class="field__input field__input--outline" id="nombre" type="text" name="nombre" placeholder="Nombre imagen">
+                                    <label class="field__label" for="nombreimagen">Nombre imagen</label>
+                                    <input class="field__input field__input--outline" id="noimagenmimagenbre" type="text" name="nombreimagen" placeholder="Nombre imagen" required>
                                 </div>
                                 <div class="field field--input field--file">
-                                    <label class="field__label" for="imagenes">Imagen</label>
-                                    <input class="field__input field__input--outline" id="imagenes" type="file" name="imagenes" accept=".jpg, .png">
+                                    <label class="field__label" for="imagen">Imagen</label>
+                                    <input class="field__input field__input--outline" id="imagen" type="file" name="imagen" accept=".jpg, .png, .webp" required>
                                 </div>
+                                <input type="hidden" name="idhabitacion" value="<?= $habitacion['id'] ?>">
                                 <input class="btn btn-primary" type="submit" value="Subir Imagen">
                                 <input class="btn btn-secondary" type="reset" value="Cancelar">
                             </form>
