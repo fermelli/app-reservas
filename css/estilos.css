@@ -316,8 +316,14 @@
 	grid-column: 1 / 3;
 }
 
-.container-cards-detail .main {
+.container-cards-detail .images {
 	grid-row: 2 / 4;
+	grid-column: 1 / 3;
+	height: 300px;
+}
+
+.container-cards-detail .main {
+	grid-row: 4 / 6;
 	grid-column: 2 / 3;
 }
 

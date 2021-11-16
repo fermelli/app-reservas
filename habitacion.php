@@ -34,6 +34,16 @@
                                 <h1 class="card-detail__title">Habitación #<?= $habitacion['numero'] ?></h1>
                             </div>
                         </div>
+                        <div class="card-detail images">
+                            <center>
+                            <form action="proceso_guardarimagen.php" method="POST" enctype="multipart/form-data">
+                            <input type="text" name="nombre" placeholder="nombre....">
+                            <input type="file" name="imagen">
+                            <input type="submit" value="Subir Imagen">
+                            </form>
+                            </center>
+
+                        </div>
                         <div class="card-detail sidebar-top">
                             <div class="card-detail__head">
                                 <h2 class="card-detail__title">Detalles</h2>
