@@ -68,11 +68,15 @@
                                         ?>
                                         <div class="image">
                                             <img class="image__img <?= $index == 0 ? 'image__img--selected' : '' ?>" src="<?= APP_URL . "/{$imagen['ruta_imagen']}" ?>" alt="<?= $imagen['nombre_imagen'] ?>" title="<?= $imagen['nombre_imagen'] ?>">
-                                            <a href="#" class="card__link position-bottom-right">
-                                                <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
-                                                    <use href="./feather-sprite.svg#delete" />
-                                                </svg>
-                                            </a>
+                                            <form action="eliminarimagen.php" method="POST">
+                                                <input type="hidden" name="idhabitacion" value="<?= $habitacion['id'] ?>">
+                                                <input type="hidden" name="idimagen" value="<?= $imagen['id'] ?>">
+                                                <button href="#" class="card__link position-bottom-right">
+                                                    <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
+                                                        <use href="./feather-sprite.svg#delete" />
+                                                    </svg>
+                                                </button>
+                                            </form>
                                         </div>
                                     <?php
                                     endforeach;

@@ -310,4 +310,10 @@ class Database extends mysqli
         $images = $result->fetch_all(MYSQLI_ASSOC);
         return $images;
     }
+
+    public function deleteImageById($id)
+    {
+        $query = "DELETE FROM imagenes WHERE id = $id ";
+        return $this->query($query);
+    }
 }
