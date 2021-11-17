@@ -53,52 +53,34 @@
                             </form>
                             <div class="container-images">
                                 <?php
-                                $imagenes = [
-                                    [
-                                        'id' => 1,
-                                        'ruta_imagen' => 'imagen1.webp',
-                                        'nombre_imagen' => 'Imagen 1',
-                                        'id_habitacion' => 1,
-                                    ],
-                                    [
-                                        'id' => 2,
-                                        'ruta_imagen' => 'imagen2.webp',
-                                        'nombre_imagen' => 'Imagen 2',
-                                        'id_habitacion' => 1,
-                                    ],
-                                    [
-                                        'id' => 3,
-                                        'ruta_imagen' => 'imagen3.webp',
-                                        'nombre_imagen' => 'Imagen 3',
-                                        'id_habitacion' => 1,
-                                    ],
-                                    [
-                                        'id' => 4,
-                                        'ruta_imagen' => 'imagen4.webp',
-                                        'nombre_imagen' => 'Imagen 4',
-                                        'id_habitacion' => 1,
-                                    ],
-                                ];
+                                $imagenes = $db->getImagesByRoomId($habitacion['id']);
 
-                                foreach ($imagenes as $index => $imagen) :
-                                    if ($index == 0) :
+                                if (count($imagenes) > 0) :
+
+                                    foreach ($imagenes as $index => $imagen) :
+                                        if ($index == 0) :
                                 ?>
-                                        <div class="image image--main">
-                                            <img class="image__img" id="img-main" src="./public/images/<?= $imagen['ruta_imagen'] ?>" alt="<?= $imagen['nombre_imagen'] ?>">
+                                            <div class="image image--main">
+                                                <img class="image__img" id="img-main" src="<?= APP_URL . "/{$imagen['ruta_imagen']}" ?>" alt="<?= $imagen['nombre_imagen'] ?>" title="<?= $imagen['nombre_imagen'] ?>">
+                                            </div>
+                                        <?php
+                                        endif;
+                                        ?>
+                                        <div class="image">
+                                            <img class="image__img <?= $index == 0 ? 'image__img--selected' : '' ?>" src="<?= APP_URL . "/{$imagen['ruta_imagen']}" ?>" alt="<?= $imagen['nombre_imagen'] ?>" title="<?= $imagen['nombre_imagen'] ?>">
+                                            <a href="#" class="card__link position-bottom-right">
+                                                <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
+                                                    <use href="./feather-sprite.svg#delete" />
+                                                </svg>
+                                            </a>
                                         </div>
                                     <?php
-                                    endif;
+                                    endforeach;
+                                else :
                                     ?>
-                                    <div class="image">
-                                        <img class="image__img <?= $index == 0 ? 'image__img--selected' : '' ?>" src="./public/images/<?= $imagen['ruta_imagen'] ?>" alt="<?= $imagen['nombre_imagen'] ?>" title="<?= $imagen['nombre_imagen'] ?>">
-                                        <a href="#" class="card__link position-bottom-right">
-                                            <svg class="card__link-icon" xmlns="http://www.w3.org/2000/svg">
-                                                <use href="./feather-sprite.svg#delete" />
-                                            </svg>
-                                        </a>
-                                    </div>
+                                    <p style="padding: 0 2rem;">No hay imagenes subidas</p>
                                 <?php
-                                endforeach;
+                                endif;
                                 ?>
                             </div>
                         </div>
@@ -240,15 +222,19 @@
             ?>
         </section>
     </div>
+    <?php require_once 'commons/footer.php' ?>
     <script src="./js/main.js"></script>
     <script>
         window.onload = function() {
             const images = document.querySelectorAll('.image__img')
+            const mainImage = document.getElementById('img-main')
             images.forEach((img, index) => {
                 if (index != 0) {
                     img.addEventListener('click', function(event) {
                         const currentImage = event.currentTarget
-                        document.getElementById('img-main').src = currentImage.src
+                        mainImage.src = currentImage.src
+                        mainImage.title = currentImage.title
+                        mainImage.alt = currentImage.alt
                         images.forEach(image => {
                             if (image.classList.contains('image__img--selected')) {
                                 image.classList.remove('image__img--selected')

@@ -299,4 +299,15 @@ class Database extends mysqli
         $query = "INSERT INTO imagenes (ruta_imagen, nombre_imagen, id_habitacion) VALUES ('$rutaImagen', '$nombreImagen', $idHabitacion)";
         return $this->query($query);
     }
+
+    public function getImagesByRoomId($id)
+    {
+        $query = "SELECT id, ruta_imagen, nombre_imagen, id_habitacion FROM imagenes WHERE id_habitacion = $id";
+        $result = $this->query($query);
+        if (!$result || $result->num_rows == 0) {
+            return [];
+        }
+        $images = $result->fetch_all(MYSQLI_ASSOC);
+        return $images;
+    }
 }
